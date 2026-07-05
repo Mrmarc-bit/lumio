@@ -1,0 +1,26 @@
+services:
+  # LumioCore Search Engine Backend
+  lumiocore:
+    image: searxng/searxng:latest
+    container_name: lumiocore-backend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./lumiocore:/etc/searxng
+    environment:
+      - SEARXNG_SETTINGS_PATH=/etc/searxng/settings.yml
+
+  # Lumio Next.js 15 Premium UI Frontend
+  lumio-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lumio-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_SEARXNG_URL=http://lumiocore:8080
+    depends_on:
+      - lumiocore

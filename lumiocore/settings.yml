@@ -1,0 +1,42 @@
+use_default_settings: true
+server:
+  port: 8080
+  bind_address: "0.0.0.0"
+  secret_key: "super_secret_key_for_searxng"
+search:
+  formats:
+    - html
+    - json
+  default_lang: "id-ID"
+  language: "id-ID"
+  locale: "id"
+
+engines:
+  - name: bing
+    disabled: false
+  - name: bing images
+    disabled: false
+  - name: bing news
+    disabled: false
+  - name: bing videos
+    disabled: false
+  - name: google
+    disabled: false
+  - name: google images
+    disabled: false
+  - name: google news
+    disabled: false
+  - name: google videos
+    disabled: false
+  - name: duckduckgo
+    disabled: false
+  - name: duckduckgo images
+    disabled: false
+  - name: duckduckgo news
+    disabled: false
+  - name: duckduckgo videos
+    disabled: false
+  - name: brave
+    disabled: true
+  - name: startpage
+    disabled: true
